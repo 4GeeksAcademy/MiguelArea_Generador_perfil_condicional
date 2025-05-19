@@ -29,18 +29,42 @@ function render(variables = {}) {
   let cover = `<div class="cover"><img src="${variables.background}" /></div>`;
   if (variables.includeCover == false) cover = "<div class='cover'></div>";
 
+  let fullName = `${variables.name || "Lucy"} ${variables.lastName ||
+    "Boilett"}`;
+  let role = `${variables.role || "Null"}`;
+  let city = `${variables.city || "Miami"}`;
+  let country = `${variables.country || "USA"}`;
+
+  let twitterURL = variables.twitter
+    ? `https://twitter.com/${variables.twitter}`
+    : "https://twitter.com/4geeksacademy";
+
+  let githubURL = variables.github
+    ? `https://github.com/${variables.github}`
+    : "https://github.com/4geeksacademy";
+
+  let linkedinURL = variables.linkedin
+    ? `https://linkedin.com/in/${variables.linkedin}`
+    : "https://linkedin.com/school/4geeksacademy";
+
+  let instagramURL = variables.instagram
+    ? `https://instagram.com/${variables.instagram}`
+    : "https://instagram.com/4geeksacademy";
+
   // reset the website body with the new html output
   document.querySelector("#widget_content").innerHTML = `<div class="widget">
             ${cover}
           <img src="${variables.avatarURL}" class="photo" />
-          <h1>Lucy Boilett</h1>
-          <h2>Web Developer</h2>
-          <h3>Miami, USA</h3>
-          <ul class="position-right">
-            <li><a href="https://twitter.com/4geeksacademy"><i class="fab fa-twitter"></i></a></li>
-            <li><a href="https://github.com/4geeksacademy"><i class="fab fa-github"></i></a></li>
-            <li><a href="https://linkedin.com/school/4geeksacademy"><i class="fab fa-linkedin"></i></a></li>
-            <li><a href="https://instagram.com/4geeksacademy"><i class="fab fa-instagram"></i></a></li>
+          <h1>${variables.name || "Lucy"} ${variables.lastName ||
+    "Boilett"}</h1>
+          <h2>${variables.role || "Null"}</h2>
+          <h3>${variables.city || "Miami"}</h3> 
+          <h3>${variables.country || "USA"}</h3>
+          <ul class="${variables.socialMediaPosition || "position-right"}">
+             <li><a href="${twitterURL}"><i class="fab fa-twitter"></i></a></li>
+             <li><a href="${githubURL}"><i class="fab fa-github"></i></a></li>
+             <li><a href="${linkedinURL}"><i class="fab fa-linkedin"></i></a></li>
+             <li><a href="${instagramURL}"><i class="fab fa-instagram"></i></a></li>
           </ul>
         </div>
     `;
